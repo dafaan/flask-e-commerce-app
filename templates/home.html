@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/w3.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div>
+            <h3 id="hh">systems test page</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo dicta molestias, quasi nulla odio praesentium. Nostrum natus ratione saepe quam aspernatur, nisi voluptatum quia? Eveniet voluptates culpa sint debitis fugiat.</p>
+        </div>
+        <br>
+        <div class="ban_btn">
+            {% if session.logged_in %}
+    
+            {% else %}
+            <a href="/login" class="btn btn-primary">login</a>
+            <a href="/register" class="btn btn-outline-success">register</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

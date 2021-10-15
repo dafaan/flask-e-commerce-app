@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="w3-table w3-striped w3-hoverable">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in data %}
+                <tr>
+                    <td><img class="pi" src="static/images/{{p.image}}" alt=""></td>
+                    <td>{{p.name}}</td>
+                    <td>N:{{p.price}}.0</td>
+                    <td>
+                        <form action="{{url_for('remove_cart_item', id=p.id)}}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="submit" value="remove item" class="btn btn-danger btn-sm">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}

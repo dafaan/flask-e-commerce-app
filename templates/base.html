@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="static/main.css">
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/w3.css">
+    <link rel="stylesheet" href="static/css/fontawesome.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flask app</title>
+</head>
+<body>
+    <div class="container-fluid" style="background-color:darkcyan; color:whitesmoke">
+		<div class="navbar navbar-default bulb">
+			<div>
+				<a href="/" style="color:white; text-decoration:none"><h3>home</h3></a>
+                
+			</div>
+			<div class="navbar navbar-right">
+                <ul style="padding-top: 15px; padding-right:5px">
+                    {% if session.logged_in %}
+                    <i class="fas fa-address-card"></i>
+                    <li><a href="/logout" class="btn btn-outline-warning btn-sm">logout</a></li>
+                    <li><a href="/store" class="btn btn-outline-warning btn-sm">menu</a></li>
+                    <li><a href="/dashboard" class="btn btn-outline-warning btn-sm">dashboard</a></li>
+                    <li><a href="/cart" class="btn btn-outline-warning btn-sm">cart</a></li>
+                    {% else %}
+                    <li><a href="/register" class="btn btn-outline-warning btn-sm">signup</a></li>
+                    <li><a href="/login" class="btn btn-outline-warning btn-sm">login</a></li>
+                    {% endif %}
+                </ul>
+				
+            </div>
+		</div>
+	</div>
+    <div class="container willie">
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="w3-panel w3-{{ category }}" style="padding-top:15px; border-radius: 1%; height: 70px;">
+                                <h6>{{ message }}</h6>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+        {% include 'includes/_errors.html' %}
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <div class="footer">
+        <p>powered by iq</p>
+    </div>
+    <script src="static/js/cart.js"></script>
+    <script>
+        function frost(){
+            x = document.getElementById('usr').value;
+            y = document.getElementById('pwd').value;
+            if (x == ''|| x == null){
+                document.getElementById('demo').innerHTML = '*name must be filled out';
+            }
+            else if (y == ''|| y == null){
+                document.getElementById('meme').innerHTML = '*password must be filled out';
+            
+            }   
+            else{
+                console.log('obo baddest')
+            } 
+        }
+    </script>
+</body>
+</html>

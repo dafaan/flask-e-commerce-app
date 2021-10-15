@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <div class="row">
+        {% for p in products %}
+        <div class="col-md-4 col-sm-4 col-xs-4" style="padding: 25px; margin-top:2px; border-radius:3%">
+            <img class="thumbnail" src="static/images/{{p.image}}" alt="test pic">
+            <div class="box-element product">
+                <h6><strong>{{p.name}}</strong></h6>
+                <div>
+                    <button data-p="{{p.id}}" data-action="add_to_cart" class="btn btn-sm btn-info update-cart">add to cart</button>
+                    <a class="btn btn-sm btn-outline-success" href="/product/{{p.id}}">View</a>
+                    <h6 style="font-size: 17px; display:inline; float:right;" class="pull-right"><strong>N{{p.price}}</strong></h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

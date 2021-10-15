@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h3>welcome!!!! <small>{{session.username}}</small></h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="w3-container w3-indigo w3-padding-16">
+                <div class="w3-left"><h3><b>products</b></h3></div>
+                <div class="w3-right" style="margin-top: 10px;"><a href="/add_product" class="w3-btn w3-green w3-round-large w3-right">add new product</a></div>
+            </div><br><br>    
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="w3-table w3-striped w3-hoverable">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>name</th>
+                        <th>price</th>
+                        <th>description</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in products %}
+                    <tr>
+                        <td>{{p.id}}</td>
+                        <td>{{p.name}}</td>
+                        <td>N:{{p.price}}.0</td>
+                        <td>{{p.description}}</td>
+                        <td><a href="/edit_product/{{p.id}}" class="btn btn-primary btn-sm">edit</a></td>
+                        <td>
+                            <form action="{{url_for('delete_product', id=p.id)}}" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="submit" value="delete" class="btn btn-danger btn-sm">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+{% endblock %}

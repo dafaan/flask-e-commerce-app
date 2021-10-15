@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}</p>
+{% endif %}
+<br>
+<div class="row fun">
+    <div class="col-md-3 jsrow"></div>
+    <div class="col-md-6 box-element">
+        <div>
+            <h4 class="header_font">register account</h4>
+        </div>
+        <hr>
+        <form role="form" action="/register" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" id="usr" placeholder="name" name="username" required>
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control" id="phn" placeholder="phone number" name="phone" required>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="pwd" placeholder="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="city" placeholder="city" name="city" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">register</button>
+        </form>
+    </div>
+    <div class="col-md-3 jsrow"></div>
+</div>
+{% endblock %}
